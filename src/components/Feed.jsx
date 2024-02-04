@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, CircularProgress } from "@mui/material";
 import { fetchFromAPI } from "../utils/fetchFormAPI";
 
 import { Sidebar, Videos } from "./";
@@ -12,7 +12,19 @@ const Feed = () => {
       setVideos(data.items)
     );
   }, [selectedCategory]);
-
+  if (!videos?.length)
+    return (
+      <CircularProgress
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          // Adjust as needed for desired margin
+          marginInline: "auto",
+        }}
+      />
+    );
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box
@@ -42,7 +54,6 @@ const Feed = () => {
           height: "90vh",
           flex: 2,
         }}
-       
       >
         <Typography
           variant="h4"

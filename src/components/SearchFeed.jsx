@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, CircularProgress } from "@mui/material";
 import { fetchFromAPI } from "../utils/fetchFormAPI";
 import { useParams } from "react-router-dom";
 
@@ -13,7 +13,18 @@ const SearchFeed = () => {
       setVideos(data.items)
     );
   }, [searchTerm]);
-
+  if (!videos?.length)
+    return (
+      <CircularProgress
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          marginInline: "auto",
+        }}
+      />
+    );
   return (
     <Box
       p={2}

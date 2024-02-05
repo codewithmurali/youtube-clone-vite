@@ -4,14 +4,19 @@ import { Stack, Box, CircularProgress } from "@mui/material";
 import { VideoCard, ChannelCard } from "./";
 
 const Videos = ({ videos, direction }) => {
-  if (!videos?.length) return <CircularProgress sx={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    // Adjust as needed for desired margin
-    marginInline: 'auto',
-  }} />;
+  if (!videos?.length)
+    return (
+      <CircularProgress
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          // Adjust as needed for desired margin
+          marginInline: "auto",
+        }}
+      />
+    );
   return (
     <Stack
       direction={direction || "row"}
